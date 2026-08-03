@@ -1,227 +1,174 @@
-# RACA Legal LLM — Fine-tuning + SAFE Pipeline
-
-## Overview
-
-This project fine-tunes Llama 3.1 8B on Qatari legal documents from RACA (Regulatory Authority for Charitable Activities) and uses the **SAFE framework** (Sparse Autoencoder-based Framework for hallucination reduction) to improve answer quality.
-
-### Architecture
-
-```
-Fine-tuned Model : JinanAzem/raca-finetuned-v2
-                   Llama 3.1 8B Instruct + QLoRA on RACA legal CSV data
-
-SAE              : Goodfire pre-trained SAE — NO TRAINING NEEDED
-                   65,536 features, all labeled on Neuronpedia
-                   https://neuronpedia.org/llama3.1-8b-it/19-resid-post-gf
-                   Downloaded automatically by sae-lens on first run
-
-RAG              : FAISS index over RACA CSV documents
-                   Retrieves top-3 relevant legal articles per question
-
-Hallucination    : SAFE framework (local — no OpenRouter needed)
-Reduction          - Generates N diverse answers using fine-tuned model
-                   - Measures semantic entropy (inconsistency = hallucination)
-                   - Extracts SAE features from question + answers
-                   - Enriches question with Neuronpedia-labeled features
-                   - Repeats until entropy drops below threshold
-```
-
----
+# RACA Legal LLM — Fine-tuning + SAE Pipeline
 
 ## Project Structure
-
 ```
-raca_v2/
-├── phase1_data_prep.py       # Data cleaning + synthetic Q&A via OpenRouter
+raca_llm_project/
+├── phase1_data_prep.py       # Data cleaning, synthetic Q&A via OpenRouter, dataset export
 ├── phase2_model_setup.py     # GPU check, model download, project config
-├── phase3_finetune.py        # QLoRA fine-tuning (CPT + SFT stages)
-├── api.py                    # FastAPI server (RAG + model inference)
-├── chat.py                   # Interactive terminal chat
-├── safe_pipeline.py          # SAFE hallucination reduction + evaluation
-├── evaluate.py               # Semantic evaluation (cosine similarity)
-├── requirements.txt
+├── phase3_finetune.py        # QLoRA fine-tuning (CPT stage → SFT stage)
+├── phase4_sae_training.py    # Sparse Autoencoder training on fine-tuned model
+├── phase5_hal_reduction.py   # Hallucination reduction via activation steering + evaluation
+├── requirements.txt          # All Python dependencies
 │
 ├── data/
-│   ├── raw_pdfs/             ← PUT YOUR PDF FILES HERE
-│   ├── raca_laws_tab*.csv    ← PUT YOUR CSV FILES HERE
+│   ├── raw_pdfs/             ← PUT YOUR 50 PDF FILES HERE
+│   ├── raca_laws_tab1.csv    ← PUT YOUR CSV FILES HERE (raca_laws_tab*.csv)
 │   └── processed/            (auto-created by Phase 1)
 │
-└── checkpoints/
-    └── ft_raca_v2/merged/    ← fine-tuned model (download from HuggingFace)
+├── checkpoints/              (auto-created by Phase 3 & 4)
+└── results/                  (auto-created by Phase 5)
 ```
-
-> ⚠️ No SAE training needed — the Goodfire SAE is downloaded automatically by sae-lens.
-> Feature labels are fetched from Neuronpedia and cached at `checkpoints/neuronpedia_labels.json`.
 
 ---
 
 ## 1. Cloud GPU Setup (Vast.ai)
 
 ### Rent an Instance
-1. Go to [vast.ai](https://vast.ai) and rent a GPU (recommended: RTX 6000 or A100, 40GB+ VRAM)
-2. Click the 🔑 icon → copy the **Direct SSH connect** command to get `<IP>` and `<PORT>`
+1. Go to [vast.ai](https://vast.ai) and rent a GPU instance (recommended: A100 40GB)
+2. In the instance dashboard, open **"Manage SSH Keys"**
+3. Your public key (`~/.ssh/id_ed25519.pub` on your Mac) should already be listed — if not, paste it in
 
-### Connect from your Mac
-
-**Terminal 1** — SSH tunnel (keep open, do nothing else in it):
-```bash
+### Get Your Connection Details
+From the Vast.ai dashboard, copy the **Direct SSH connect** command. It looks like:
+```
 ssh -p <PORT> root@<IP> -L 8080:localhost:8080
-touch ~/.no_auto_tmux   # disable auto-tmux on reconnect
 ```
+Note your `<IP>` and `<PORT>` — you'll need them below.
 
-**Terminal 2** — Work terminal:
+### Configure SSH on Your Mac
+Open your terminal and run:
 ```bash
-ssh -p <PORT> root@<IP>
-# if tmux auto-attaches: Ctrl+B then C to open a new window
+nano ~/.ssh/config
 ```
 
-> ⚠️ Every new instance gets a new IP and port — update both terminals each time.
+Add or update this block (replace IP and PORT with your instance values):
+```
+Host vastai
+    HostName <IP>
+    Port <PORT>
+    User root
+    LocalForward 8080 localhost:8080
+```
+
+Save with **Ctrl+X → Y → Enter**.
+
+Verify it saved correctly:
+```bash
+cat ~/.ssh/config
+```
+
+### Connect via Terminal
+```bash
+ssh vastai
+```
+
+### Connect via VS Code
+1. Install the **Remote - SSH** extension in VS Code
+2. Open the Remote Explorer panel (left sidebar)
+3. Hover over your host and click the **→ arrow** to connect
+4. Once connected, the bottom-left corner shows a green `SSH: <IP>` badge
+
+> ⚠️ Every time you destroy and recreate an instance, you get a **new IP and port**. Update `~/.ssh/config` each time.
 
 ---
 
-## 2. Copy Project from Mac to GPU
+## 2. Where to Place Your Data
 
-Run this on your **Mac terminal**:
-```bash
-scp -r -P <PORT> ~/Desktop/raca_v2 root@<IP>:/root/
-```
+**CSV files** (e.g. `raca_laws_tab1.csv`, `raca_laws_tab2.csv`, ...):
+- Place directly in `raca_llm_project/`
+- Phase 1 finds them via glob pattern `raca_laws_tab*.csv`
+
+**PDF files** (your 50 source documents):
+- Place in `raca_llm_project/data/raw_pdfs/`
+- These are your source of truth for RAG in Phase 5
 
 ---
 
-## 3. Environment Setup
+## 3. Environment Setup (on the GPU instance)
+
+The Vast.ai instance comes with a pre-installed venv at `/venv/main`. Always activate it first:
 
 ```bash
 source /venv/main/bin/activate
-cd /root/raca_v2
+```
 
-# Install dependencies
-sed -i 's/^flash-attn/# flash-attn/' requirements.txt
+> ⚠️ Do not create a new venv — torch and CUDA libraries are pre-installed in `/venv/main`. Creating a separate venv will cause `ModuleNotFoundError: No module named 'torch'` when building packages like `flash-attn`.
+
+### Clone the Repo
+```bash
+git clone https://github.com/jenanazem/raca.git
+cd raca
+```
+
+### Install Dependencies (correct order)
+
+`flash-attn` requires `torch` to already be present at build time. Install it separately with `--no-build-isolation`:
+
+```bash
+# Step 1 — activate the pre-installed venv (torch is already here)
+source /venv/main/bin/activate
+
+# Step 2 — install flash-attn first, bypassing build isolation
+pip install flash-attn --no-build-isolation
+
+# Step 3 — install everything else
 pip install -r requirements.txt
-pip install fastapi uvicorn sentence-transformers faiss-cpu accelerate
-pip install sae-lens transformer-lens scikit-learn
-
-# Fix torch version (sae-lens may downgrade it)
-pip install torch==2.12.0+cu130 torchvision --index-url https://download.pytorch.org/whl/cu130
-
-# Set API key (only needed for Phase 1 data generation)
-export OPENROUTER_API_KEY=sk-or-xxxxxxxxxxxxxxxx
 ```
 
----
-
-## 4. Download Fine-tuned Model
-
-```bash
-hf download JinanAzem/raca-finetuned-v2 --local-dir ./checkpoints/ft_raca_v2
-```
-
-> The Goodfire SAE is downloaded automatically when you first run `safe_pipeline.py`.
-> No need to download or train your own SAE.
-
----
-
-## 5. Code Fixes (apply once after cloning)
-
-```bash
-sed -i "s/attn_implementation='flash_attention_2'/attn_implementation='eager'/" phase3_finetune.py
-sed -i '/group_by_length=True/d' phase3_finetune.py
-sed -i 's/tokenizer=tokenizer,/processing_class=tokenizer,/' phase3_finetune.py
-sed -i 's/cpt_args = cpt_args.replace(num_train_epochs=n_epochs_cpt)/cpt_args.num_train_epochs = n_epochs_cpt/' phase3_finetune.py
-sed -i 's/sft_args = sft_args.replace(num_train_epochs=n_epochs_sft)/sft_args.num_train_epochs = n_epochs_sft/' phase3_finetune.py
-sed -i 's/max_seq_length=/max_length=/' phase3_finetune.py
-sed -i 's/fp16=config\[.dtype.\] == .float16.,/fp16=False,/' phase3_finetune.py
-sed -i 's/from pathlib import Path/from pathlib import Path\nfrom typing import Optional, Dict, Any/' phase2_model_setup.py
-```
-
----
-
-## 6. Run the Chat Interface
-
-**Terminal 1** (API server — with port forwarding):
-```bash
-source /venv/main/bin/activate
-cd /root/raca_v2
-fuser -k 8080/tcp
-python api.py
-```
-
-Wait for `Uvicorn running on http://0.0.0.0:8080`, then:
-
-**Terminal 2** (Chat):
-```bash
-source /venv/main/bin/activate
-cd /root/raca_v2
-python chat.py
-```
-
----
-
-## 7. Run SAFE Pipeline
-
-```bash
-# Single question test
-python safe_pipeline.py --question "ما هي شروط تأسيس الجمعية الخيرية؟"
-
-# Quick evaluation (20 examples)
-python safe_pipeline.py --test_file data/processed/sft_test.jsonl --limit 20
-
-# Full evaluation (171 examples)
-python safe_pipeline.py --test_file data/processed/sft_test.jsonl
-```
-
-Results are saved incrementally to `results/safe_eval.json` — you can stop anytime.
-
----
-
-## 8. Run Semantic Evaluation (without SAFE)
-
-```bash
-# Steered model only
-python evaluate.py --limit 20
-
-# Compare plain vs steered
-python evaluate.py --compare --limit 20
-
-# Full test set
-python evaluate.py
-```
-
----
-
-## 9. Retrain from Scratch
-
-Only needed if you want to retrain with new data or more epochs.
-
+### Set Your API Key
 ```bash
 export OPENROUTER_API_KEY=sk-or-xxxxxxxxxxxxxxxx
+```
 
-# Phase 1 — generate richer training data
+---
+
+## 4. Run the Pipeline
+
+```bash
 python phase1_data_prep.py --input_glob "data/processed/raca_tab*.csv" --output_dir ./data/processed
 
-# Phase 2 — verify GPU setup
 python phase2_model_setup.py --skip_model_load
 
-# Increase epochs in config
-python3 -c "
-import json
-c = json.load(open('data/processed/project_config.json'))
-c['num_train_epochs_cpt'] = 2
-c['num_train_epochs_sft'] = 5
-c['dtype'] = 'bfloat16'
-json.dump(c, open('data/processed/project_config.json', 'w'), ensure_ascii=False, indent=2)
-print('done')
-"
+python phase3_finetune.py \
+  --config ./data/processed/project_config.json \
+  --data_dir ./data/processed \
+  --output_dir ./checkpoints/ft_raca
 
-# Phase 3 — fine-tune
-python phase3_finetune.py --data_dir ./data/processed --output_dir ./checkpoints/ft_raca_v2
+python phase4_sae_training.py \
+  --config ./data/processed/project_config.json \
+  --model_path ./checkpoints/ft_raca/merged \
+  --data_dir ./data/processed \
+  --output_dir ./checkpoints/sae_raca
 
-# Upload to HuggingFace
-hf upload JinanAzem/raca-finetuned-v2 /root/raca_v2/checkpoints/ft_raca_v2
+python phase5_hal_reduction.py \
+  --config ./data/processed/project_config.json \
+  --model_path ./checkpoints/ft_raca/merged \
+  --sae_path ./checkpoints/sae_raca/sae_best.pt \
+  --feature_file ./checkpoints/sae_raca/feature_interpretations.json
 ```
 
 ---
 
-## 10. Save Before Destroying Instance
+## 5. Manual Step Between Phase 4 and Phase 5
+
+After Phase 4 finishes, open:
+```
+checkpoints/sae_raca/feature_interpretations.json
+```
+
+For each feature entry, review the `top_activating_docs` snippets and fill in:
+```json
+"label": "what concept does this feature encode?"
+"is_hallucination_feature": true / false
+```
+
+This is **required** before running Phase 5.
+
+---
+
+## 6. Save Your Work Before Destroying the Instance
+
+> ⚠️ Vast.ai instances are ephemeral — everything is lost when destroyed. Always push before stopping.
 
 ```bash
 git add .
@@ -231,27 +178,18 @@ git push
 
 ---
 
-## Evaluation Results
-
-| Model | Avg Cosine Sim | ≥0.8 | ≥0.6 |
-|---|---|---|---|
-| v1 (3 SFT epochs) | 0.619 | 21.9% | 55.0% |
-| v2 (5 SFT epochs, richer data) | 0.653 | 28.7% | 61.4% |
-| v2 + SAFE (local model) | TBD | TBD | TBD |
-
----
-
 ## Hardware Requirements
 
 | | Minimum | Recommended |
 |---|---|---|
-| GPU VRAM | 40GB | 80GB+ |
-| Phase 3 training | ~4–6h on RTX 6000 | ~2–4h on A100 |
-| SAFE pipeline | ~1–2 min/question | faster with more VRAM |
+| GPU VRAM | 12GB (RTX 3080, T4) | 40GB (A100) |
+| Phase 3 training | ~6–8h on T4 | ~2–4h on A100 |
+| Phase 4 collection | ~3–4h on T4 | ~1–2h on A100 |
 
 ---
 
-## Estimated Costs
+## Estimated OpenRouter API Cost (Phase 1)
 
-- OpenRouter (Phase 1 data generation): ~$2–5 USD total
-- Vast.ai GPU (RTX 6000): ~$0.03–0.05/hr
+- Model: `qwen/qwen-2.5-72b-instruct`
+- 50 docs × 20 questions = 1,000 Q&A pairs + paraphrase augmentation
+- **Estimated cost: $2–5 USD total**
