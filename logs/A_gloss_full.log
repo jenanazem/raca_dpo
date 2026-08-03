@@ -1,0 +1,21 @@
+nohup: ignoring input
+2026-07-29 08:13:53,744 - INFO - Corpus: 865 texts
+2026-07-29 08:13:54,250 - INFO - Reusing spans for 6786 features
+2026-07-29 08:13:54,265 - INFO - Density distribution (fraction of texts a feature fires on):
+2026-07-29 08:13:54,266 - INFO -   0.0-0.1 : 6202 features
+2026-07-29 08:13:54,266 - INFO -   0.1-0.2 : 229 features
+2026-07-29 08:13:54,266 - INFO -   0.2-0.3 : 114 features
+2026-07-29 08:13:54,266 - INFO -   0.3-0.4 : 47 features
+2026-07-29 08:13:54,266 - INFO -   0.4-0.5 : 50 features
+2026-07-29 08:13:54,266 - INFO -   0.5-0.6 : 33 features
+2026-07-29 08:13:54,266 - INFO -   0.6-0.7 : 15 features
+2026-07-29 08:13:54,266 - INFO -   0.7-0.8 : 7 features
+2026-07-29 08:13:54,266 - INFO -   0.8-0.9 : 12 features
+2026-07-29 08:13:54,266 - INFO -   0.9-1.0 : 77 features
+2026-07-29 08:13:54,266 - INFO - 3850/6786 features kept (>= 3 examples, density in [0.00, 0.30])
+2026-07-29 08:13:54,869 - INFO - Vocabulary: 8606 terms with df >= 3 (of 15993 observed)
+2026-07-29 08:13:54,870 - INFO - Labelling 3850 features via ~anthropic/claude-sonnet-latest
+2026-07-29 08:17:25,877 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-29 08:17:48,384 - INFO -   50/3850 labelled
+2026-07-29 08:24:17,894 - INFO -   125/3850 labelled
+2026-07-29 08:25:24,966 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)

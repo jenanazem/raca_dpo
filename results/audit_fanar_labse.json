@@ -1,0 +1,13 @@
+{
+  "model": "fanar",
+  "embedder": "labse",
+  "n_questions": 82,
+  "A1_correlations": {
+    "Length": -0.076,
+    "Template rate": 0.051,
+    "Citation tokens": -0.01,
+    "CITMATCH": -0.025,
+    "Sup score": 0.347,
+    "PAV": 0.164
+  }
+}

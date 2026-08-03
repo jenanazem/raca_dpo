@@ -1,0 +1,98 @@
+2026-07-29 08:48:28,146 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:28,155 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/modules.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:28,280 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:28,290 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:28,290 - INFO - Loading SentenceTransformer model from sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2.
+2026-07-29 08:48:28,415 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:28,424 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:28,550 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:28,559 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/README.md "HTTP/1.1 200 OK"
+2026-07-29 08:48:28,678 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:28,687 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/modules.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:28,812 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:28,820 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:28,940 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-07-29 08:48:29,065 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:29,073 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:29,205 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:29,214 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5849.18it/s]
+2026-07-29 08:48:29,435 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-07-29 08:48:29,562 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-29 08:48:29,687 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-29 08:48:29,810 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-29 08:48:29,959 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:29,967 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:30,094 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:30,102 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:30,222 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:30,229 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:30,349 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:30,357 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:30,493 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:30,502 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:30,629 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-29 08:48:30,759 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-29 08:48:32,068 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 "HTTP/1.1 200 OK"
+2026-07-29 08:48:32,351 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-29 08:48:32,359 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-07-29 08:48:32,483 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 "HTTP/1.1 200 OK"
+2026-07-29 08:48:32,708 - INFO - Loading ./checkpoints/llama_simdpo/merged
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<01:02,  4.67it/s]Loading weights:   2%|▏         | 6/291 [00:00<00:13, 20.69it/s]Loading weights:   8%|▊         | 23/291 [00:00<00:03, 69.98it/s]Loading weights:  14%|█▎        | 40/291 [00:00<00:02, 102.24it/s]Loading weights:  20%|█▉        | 58/291 [00:00<00:01, 122.27it/s]Loading weights:  25%|██▌       | 73/291 [00:00<00:01, 129.02it/s]Loading weights:  30%|██▉       | 87/291 [00:00<00:01, 131.44it/s]Loading weights:  36%|███▌      | 104/291 [00:00<00:01, 138.83it/s]Loading weights:  42%|████▏     | 121/291 [00:01<00:01, 147.60it/s]Loading weights:  48%|████▊     | 139/291 [00:01<00:00, 152.00it/s]Loading weights:  54%|█████▍    | 157/291 [00:01<00:00, 160.06it/s]Loading weights:  60%|██████    | 175/291 [00:01<00:00, 161.36it/s]Loading weights:  66%|██████▌   | 192/291 [00:01<00:00, 153.63it/s]Loading weights:  71%|███████▏  | 208/291 [00:01<00:00, 148.19it/s]Loading weights:  77%|███████▋  | 223/291 [00:01<00:00, 144.62it/s]Loading weights:  82%|████████▏ | 238/291 [00:01<00:00, 141.85it/s]Loading weights:  88%|████████▊ | 256/291 [00:01<00:00, 147.29it/s]Loading weights:  93%|█████████▎| 271/291 [00:02<00:00, 145.02it/s]Loading weights:  98%|█████████▊| 286/291 [00:02<00:00, 146.39it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 133.01it/s]
+2026-07-29 08:48:36,685 - INFO - 30 PAV-evaluable examples
+2026-07-29 08:48:36,685 - INFO - Loaded 275 feature labels from checkpoints/labels_llm.json
+2026-07-29 08:48:37,957 - INFO - Wrapping model in HookedSAETransformer
+/root/raca_backup/safe_dpo_eval.py:295: DeprecationWarning: HookedTransformer.from_pretrained is deprecated and will be removed in a future major release. Use TransformerBridge.boot_transformers(...) instead, then call enable_compatibility_mode() for HookedTransformer-equivalent numerics. See docs/source/content/migrating_to_v3.md.
+  self.model = HookedSAETransformer.from_pretrained(
+Loaded pretrained model meta-llama/Llama-3.1-8B-Instruct into HookedTransformer
+2026-07-29 08:48:51,032 - INFO - Loading SAE goodfire-llama-3.1-8b-instruct / layer_19
+2026-07-29 08:48:53,636 - INFO - HTTP Request: HEAD https://huggingface.co/Goodfire/Llama-3.1-8B-Instruct-SAE-l19/resolve/main/Llama-3.1-8B-Instruct-SAE-l19.pth "HTTP/1.1 302 Found"
+PAV: loaded 50 template 4-grams
+[1/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.764
+[2/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.774
+[3/30] H=1.6094→1.6094 loops=3 PAV=False sim=0.729
+[4/30] H=1.6094→0.5004 loops=3 PAV=False sim=0.489
+[5/30] H=-0.0→-0.0 loops=0 PAV=True sim=0.937
+[6/30] H=-0.0→-0.0 loops=0 PAV=True sim=0.602
+[7/30] H=0.9503→0.5004 loops=3 PAV=False sim=0.514
+[8/30] H=-0.0→-0.0 loops=0 PAV=True sim=0.838
+[9/30] H=0.673→0.5004 loops=1 PAV=False sim=0.581
+[10/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.381
+[11/30] H=0.9503→1.3322 loops=3 PAV=False sim=0.376
+[12/30] H=0.9503→0.5004 loops=1 PAV=False sim=0.739
+[13/30] H=0.673→0.5004 loops=2 PAV=False sim=0.686
+[14/30] H=1.3322→1.6094 loops=3 PAV=False sim=0.738
+[15/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.793
+[16/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.554
+[17/30] H=-0.0→-0.0 loops=0 PAV=True sim=0.257
+[18/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.614
+[19/30] H=0.9503→-0.0 loops=1 PAV=True sim=0.934
+[20/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.729
+[21/30] H=0.9503→0.5004 loops=1 PAV=False sim=0.558
+[22/30] H=1.3322→1.3322 loops=3 PAV=True sim=0.660
+[23/30] H=1.6094→1.3322 loops=3 PAV=False sim=0.638
+[24/30] H=-0.0→-0.0 loops=0 PAV=True sim=0.931
+[25/30] H=-0.0→-0.0 loops=0 PAV=True sim=0.884
+[26/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.719
+[27/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.903
+[28/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.594
+[29/30] H=-0.0→-0.0 loops=0 PAV=True sim=0.807
+[30/30] H=-0.0→-0.0 loops=0 PAV=True sim=0.978
+
+==============================================================
+  SAFE  |  ./checkpoints/llama_simdpo/merged  |  seed 42
+==============================================================
+  n                    : 30
+  CITPRESENCE          : 100.0%
+  CITMATCH             : 70.0%
+  CITSUPPORT           : 40.0%
+  PAV                  : 33.3%
+  Avg cosine sim       : 0.690
+  Avg answer length    : 40.3
+  Trigger rate         : 40.0%
+  Avg loops            : 0.90
+  Actually enriched    : 40.0%
+==============================================================
+
+Saved → results_cb/eval_simdpo_safe.json
+

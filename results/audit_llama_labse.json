@@ -1,0 +1,13 @@
+{
+  "model": "llama",
+  "embedder": "labse",
+  "n_questions": 78,
+  "A1_correlations": {
+    "Length": -0.104,
+    "Template rate": 0.142,
+    "Citation tokens": -0.14,
+    "CITMATCH": -0.079,
+    "Sup score": 0.208,
+    "PAV": 0.099
+  }
+}

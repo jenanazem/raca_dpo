@@ -1,0 +1,13 @@
+{
+  "model": "fanar",
+  "embedder": "bge-m3",
+  "n_questions": 82,
+  "A1_correlations": {
+    "Length": -0.045,
+    "Template rate": 0.04,
+    "Citation tokens": 0.009,
+    "CITMATCH": -0.12,
+    "Sup score": 0.31,
+    "PAV": 0.111
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "n_answers": 5,
+  "ceiling": 1.6094379124341003,
+  "entropy_threshold": 0.9,
+  "sweep": [
+    {
+      "threshold": 0.05,
+      "mean_entropy": 1.3292715628141927,
+      "median_entropy": 1.6094379124341005,
+      "frac_at_ceiling": 0.5333333333333333,
+      "trigger_rate": 0.9
+    },
+    {
+      "threshold": 0.1,
+      "mean_entropy": 0.8801424600112336,
+      "median_entropy": 0.9502705392332347,
+      "frac_at_ceiling": 0.23333333333333334,
+      "trigger_rate": 0.5666666666666667
+    },
+    {
+      "threshold": 0.15,
+      "mean_entropy": 0.5266985599855267,
+      "median_entropy": 0.5004024235381879,
+      "frac_at_ceiling": 0.1,
+      "trigger_rate": 0.36666666666666664
+    },
+    {
+      "threshold": 0.2,
+      "mean_entropy": 0.3600011272930811,
+      "median_entropy": 0.0,
+      "frac_at_ceiling": 0.0,
+      "trigger_rate": 0.2
+    },
+    {
+      "threshold": 0.25,
+      "mean_entropy": 0.14506729627714227,
+      "median_entropy": 0.0,
+      "frac_at_ceiling": 0.0,
+      "trigger_rate": 0.03333333333333333
+    },
+    {
+      "threshold": 0.3,
+      "mean_entropy": 0.048355765425714084,
+      "median_entropy": 0.0,
+      "frac_at_ceiling": 0.0,
+      "trigger_rate": 0.03333333333333333
+    },
+    {
+      "threshold": 0.35,
+      "mean_entropy": 0.048355765425714084,
+      "median_entropy": 0.0,
+      "frac_at_ceiling": 0.0,
+      "trigger_rate": 0.03333333333333333
+    },
+    {
+      "threshold": 0.4,
+      "mean_entropy": 0.022433722233641883,
+      "median_entropy": 0.0,
+      "frac_at_ceiling": 0.0,
+      "trigger_rate": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "mean_entropy": 0.0,
+      "median_entropy": 0.0,
+      "frac_at_ceiling": 0.0,
+      "trigger_rate": 0.0
+    },
+    {
+      "threshold": 0.6,
+      "mean_entropy": 0.0,
+      "median_entropy": 0.0,
+      "frac_at_ceiling": 0.0,
+      "trigger_rate": 0.0
+    }
+  ]
+}

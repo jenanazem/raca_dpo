@@ -1,0 +1,97 @@
+2026-07-28 14:33:05,006 - INFO - Corpus: 1331 texts
+2026-07-28 14:33:10,237 - INFO - Loading ./checkpoints/llama_sft/merged
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<01:16,  3.78it/s]Loading weights:   5%|▍         | 14/291 [00:00<00:06, 45.59it/s]Loading weights:  11%|█         | 32/291 [00:00<00:02, 86.37it/s]Loading weights:  17%|█▋        | 49/291 [00:00<00:02, 112.14it/s]Loading weights:  23%|██▎       | 67/291 [00:00<00:01, 125.37it/s]Loading weights:  29%|██▉       | 85/291 [00:00<00:01, 138.55it/s]Loading weights:  35%|███▍      | 101/291 [00:00<00:01, 143.88it/s]Loading weights:  41%|████      | 119/291 [00:01<00:01, 152.07it/s]Loading weights:  46%|████▋     | 135/291 [00:01<00:01, 149.67it/s]Loading weights:  52%|█████▏    | 151/291 [00:01<00:00, 149.91it/s]Loading weights:  57%|█████▋    | 167/291 [00:01<00:00, 150.89it/s]Loading weights:  63%|██████▎   | 184/291 [00:01<00:00, 149.07it/s]Loading weights:  69%|██████▉   | 202/291 [00:01<00:00, 152.34it/s]Loading weights:  75%|███████▍  | 218/291 [00:01<00:00, 153.40it/s]Loading weights:  80%|████████  | 234/291 [00:01<00:00, 149.48it/s]Loading weights:  86%|████████▌ | 250/291 [00:01<00:00, 143.87it/s]Loading weights:  91%|█████████ | 265/291 [00:02<00:00, 142.91it/s]Loading weights:  98%|█████████▊| 284/291 [00:02<00:00, 151.06it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 136.40it/s]
+2026-07-28 14:33:14,155 - INFO - Wrapping in HookedSAETransformer
+Loaded pretrained model meta-llama/Llama-3.1-8B-Instruct into HookedTransformer
+2026-07-28 14:33:26,392 - INFO - Loading SAE goodfire-llama-3.1-8b-instruct / layer_19
+2026-07-28 14:33:29,192 - INFO - HTTP Request: HEAD https://huggingface.co/Goodfire/Llama-3.1-8B-Instruct-SAE-l19/resolve/main/Llama-3.1-8B-Instruct-SAE-l19.pth "HTTP/1.1 302 Found"
+2026-07-28 14:33:29,702 - INFO - HTTP Request: GET https://huggingface.co/api/models/Goodfire/Llama-3.1-8B-Instruct-SAE-l19/xet-read-token/f6775a221e47b44233af4bac2c7b65189265519a "HTTP/1.1 200 OK"
+2026-07-28 14:34:46,750 - INFO - SAE width: 65536
+2026-07-28 14:34:54,842 - INFO -   50/1331 texts | 1233 features seen
+2026-07-28 14:35:03,064 - INFO -   100/1331 texts | 1862 features seen
+2026-07-28 14:35:10,966 - INFO -   150/1331 texts | 2335 features seen
+2026-07-28 14:35:18,959 - INFO -   200/1331 texts | 2618 features seen
+2026-07-28 14:35:26,970 - INFO -   250/1331 texts | 2834 features seen
+2026-07-28 14:35:35,166 - INFO -   300/1331 texts | 3040 features seen
+2026-07-28 14:35:42,880 - INFO -   350/1331 texts | 3114 features seen
+2026-07-28 14:35:50,727 - INFO -   400/1331 texts | 3375 features seen
+2026-07-28 14:35:58,892 - INFO -   450/1331 texts | 3523 features seen
+2026-07-28 14:36:06,847 - INFO -   500/1331 texts | 3657 features seen
+2026-07-28 14:36:14,752 - INFO -   550/1331 texts | 3704 features seen
+2026-07-28 14:36:22,741 - INFO -   600/1331 texts | 3811 features seen
+2026-07-28 14:36:30,698 - INFO -   650/1331 texts | 3897 features seen
+2026-07-28 14:36:38,702 - INFO -   700/1331 texts | 3911 features seen
+2026-07-28 14:36:46,976 - INFO -   750/1331 texts | 4072 features seen
+2026-07-28 14:36:54,933 - INFO -   800/1331 texts | 4243 features seen
+2026-07-28 14:37:02,958 - INFO -   850/1331 texts | 4384 features seen
+2026-07-28 14:37:10,005 - INFO -   900/1331 texts | 4663 features seen
+2026-07-28 14:37:16,042 - INFO -   950/1331 texts | 5127 features seen
+2026-07-28 14:37:21,863 - INFO -   1000/1331 texts | 5475 features seen
+2026-07-28 14:37:27,720 - INFO -   1050/1331 texts | 5786 features seen
+2026-07-28 14:37:33,582 - INFO -   1100/1331 texts | 5945 features seen
+2026-07-28 14:37:39,459 - INFO -   1150/1331 texts | 6095 features seen
+2026-07-28 14:37:45,477 - INFO -   1200/1331 texts | 6225 features seen
+2026-07-28 14:37:51,544 - INFO -   1250/1331 texts | 6369 features seen
+2026-07-28 14:37:57,135 - INFO -   1300/1331 texts | 6541 features seen
+2026-07-28 14:38:00,804 - INFO - Harvest complete: 6600 distinct features
+2026-07-28 14:38:01,365 - INFO - Spans saved → checkpoints/local_feature_spans.json
+2026-07-28 14:38:01,557 - INFO - Density distribution (fraction of texts a feature fires on):
+2026-07-28 14:38:01,557 - INFO -   0.0-0.1 : 6179 features
+2026-07-28 14:38:01,557 - INFO -   0.1-0.2 : 177 features
+2026-07-28 14:38:01,558 - INFO -   0.2-0.3 : 81 features
+2026-07-28 14:38:01,558 - INFO -   0.3-0.4 : 44 features
+2026-07-28 14:38:01,558 - INFO -   0.4-0.5 : 24 features
+2026-07-28 14:38:01,558 - INFO -   0.5-0.6 : 21 features
+2026-07-28 14:38:01,558 - INFO -   0.6-0.7 : 19 features
+2026-07-28 14:38:01,558 - INFO -   0.7-0.8 : 12 features
+2026-07-28 14:38:01,558 - INFO -   0.8-0.9 : 16 features
+2026-07-28 14:38:01,558 - INFO -   0.9-1.0 : 27 features
+2026-07-28 14:38:01,559 - INFO - 3901/6600 features kept (>= 3 examples, density in [0.00, 0.50])
+2026-07-28 14:38:02,207 - INFO - Vocabulary: 8835 terms with df >= 3 (of 16166 observed)
+
+==================================================================
+  Local SAE feature labels (v2)
+==================================================================
+  SAE                  : goodfire-llama-3.1-8b-instruct / layer_19
+  Corpus texts         : 1331
+  Vocabulary (df>=3)   : 8835
+  Features observed    : 6600
+  Features kept        : 3901
+  Labels written       : 3895  (empty: 6)
+  Incoherent (dropped) : 0
+  Extractive fallback  : 0
+  Distinct label texts : 3779  (97% unique)
+==================================================================
+
+  Sample labels (feature, texts-fired-on, density, label):
+       9516  n=662  d=0.50  مؤسسه، لحساب، خيريه، مراجعته، وعرض
+      19967  n=662  d=0.50  تعويض، تدريجي، متوافقه، التسويات، المصاريف
+      13253  n=655  d=0.49  اجمالي، يزيد، يوجهون، يلزمه، خمسه
+      36157  n=640  d=0.48  والقنوات، للمنهج، متاحا، بتوثيق، وطبيعه
+      46824  n=631  d=0.47  خلفيه، استشارات، ورقم، بخلاف، لمعالجه
+      31562  n=630  d=0.47  تنشط، للحوكمه، للاطار، تحديثات، باعمال
+      43913  n=627  d=0.47  واجباتها، تبلغ، المشوره، الموعد، المستقله
+      12838  n=625  d=0.47  والاسس، تبني، توخي، الحذر، يراعي
+      42713  n=624  d=0.47  تعطيل، المشروعه، الانشطه، وتعريف، المنتسبين
+      25698  n=618  d=0.46  الترخيص، المؤجر، والموضحه، المده، صافيه
+      45950  n=612  d=0.46  ليعيشوا، بحقوقهم، وتزويدهم، والتاثير، التمتع
+      31100  n=601  d=0.45  المبادرات، واهداف، اعتمادها، الخطه، الاستراتيجيه
+      37664  n=594  d=0.45  لقانوني، الدمار، اسلحه، واتفاقيه، قمع
+      47187  n=586  d=0.44  بالاشراف، المكلفه، ادارات، التراسل، استحدثت
+      21837  n=573  d=0.43  بمكاتبها، تخزينها، بالمسؤوليه، اصدقاء، تقتضيه
+
+  Sample spans for the first labelled feature:
+    [32.79] كفاية السياسات والإجراءات المطبقة وعرض نتائج مراجعته على المنظمة وعلى هيئة تنظيم الأعمال
+    [31.77] والمؤسسات الخاصة الخيرية المنظمات غير الهادفة للربح تسجيل جمعية أو مؤسسة خاصة خيرية
+    [31.51] والمؤسسات الخاصة الخيرية المنظمات غير الهادفة للربح تسجيل جمعية أو مؤسسة خاصة خيرية
+    [27.68] والمؤسسات الخاصة الخيرية المنظمات غير الهادفة للربح تسجيل جمعية أو مؤسسة خاصة خيرية
+
+  Labels → checkpoints/local_feature_labels.json
+  Spans  → checkpoints/local_feature_spans.json   (re-score with --reuse_spans)
+
+  Check the sample spans are whole words. If fragments persist, raise --window;
+  if labels look generic, lower --max_density.
+
+  Next:
+    python safe_dpo_eval.py --model_path ./checkpoints/llama_sft/merged --arm safe --label_file checkpoints/local_feature_labels.json --steer_lang ar --limit 2
+

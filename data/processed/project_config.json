@@ -1,0 +1,25 @@
+{
+  "model_id": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+  "use_qlora": true,
+  "dtype": "float16",
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.05,
+  "lora_target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "max_seq_length": 2048,
+  "training_batch_size": 2,
+  "gradient_accumulation_steps": 8,
+  "num_train_epochs_cpt": 1,
+  "num_train_epochs_sft": 3,
+  "sae_hook_layer": 20,
+  "sae_expansion_factor": 8,
+  "sae_l1_coefficient": 0.0002,
+  "n_source_docs": 45,
+  "n_sft_records": 867,
+  "synth_model": "meta-llama/llama-3.1-70b-instruct"
+}

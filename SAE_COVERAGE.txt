@@ -1,0 +1,15 @@
+SAE feature interpretability on Arabic legal text
+==================================================
+SAE:      Goodfire llama-3.1-8b-instruct, layer 19, 65536 features
+Corpus:   865 RACA document chunks + sft_train fields (max 2500 texts)
+Judge:    qwen/qwen3-235b-a22b-2507, Arabic prompt, abstention allowed
+
+Features observed (top-200 per text):        6786
+Kept (density <= 0.3, >= 3 spans):           3850
+  Coherent, labelled:                        2047  (53.2%)
+  Incoherent, dropped:                       1803  (46.8%)
+Distinct label strings:                      1672  (82% of labelled)
+
+Caveats: abstention rate is judge-dependent (a Sonnet partial run over the
+first 50 features abstained ~38%). 18% duplicate label strings means distinct
+features collapse when SAFE differences them by description text.

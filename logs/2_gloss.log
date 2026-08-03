@@ -1,0 +1,297 @@
+2026-07-28 14:38:06,277 - INFO - Corpus: 865 texts
+2026-07-28 14:38:06,793 - INFO - Reusing spans for 6600 features
+2026-07-28 14:38:06,808 - INFO - Density distribution (fraction of texts a feature fires on):
+2026-07-28 14:38:06,808 - INFO -   0.0-0.1 : 6032 features
+2026-07-28 14:38:06,808 - INFO -   0.1-0.2 : 222 features
+2026-07-28 14:38:06,808 - INFO -   0.2-0.3 : 99 features
+2026-07-28 14:38:06,808 - INFO -   0.3-0.4 : 57 features
+2026-07-28 14:38:06,808 - INFO -   0.4-0.5 : 45 features
+2026-07-28 14:38:06,808 - INFO -   0.5-0.6 : 25 features
+2026-07-28 14:38:06,808 - INFO -   0.6-0.7 : 14 features
+2026-07-28 14:38:06,808 - INFO -   0.7-0.8 : 14 features
+2026-07-28 14:38:06,808 - INFO -   0.8-0.9 : 16 features
+2026-07-28 14:38:06,808 - INFO -   0.9-1.0 : 76 features
+2026-07-28 14:38:06,809 - INFO - 3749/6600 features kept (>= 3 examples, density in [0.00, 0.30])
+2026-07-28 14:38:07,417 - INFO - Vocabulary: 8606 terms with df >= 3 (of 15993 observed)
+2026-07-28 14:38:07,417 - INFO - Labelling 400 features via ~anthropic/claude-sonnet-latest
+2026-07-28 14:38:29,780 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:38:37,597 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:38:45,883 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:38:53,158 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:39:18,904 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:39:43,777 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:39:51,888 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:40:00,689 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:40:07,907 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:40:30,872 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:40:37,838 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:40:45,705 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:40:58,618 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:41:44,972 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:41:52,436 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:41:59,890 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:42:24,884 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:42:31,850 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:42:39,534 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:42:50,519 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:42:58,135 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:43:04,871 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:43:11,815 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:43:20,474 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:43:28,194 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:43:36,181 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:43:44,073 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:43:51,313 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:44:40,535 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:44:48,381 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:44:55,260 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:45:02,549 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:45:09,582 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:45:16,590 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:45:17,593 - INFO -   50/400 labelled
+2026-07-28 14:45:53,574 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:46:00,828 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:46:08,339 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:46:21,763 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:46:28,443 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:46:47,159 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:46:55,163 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:47:04,783 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:47:11,885 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:47:23,128 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:47:30,670 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:47:38,767 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:47:49,445 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:47:58,229 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:48:06,880 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:48:30,635 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:48:42,908 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:49:01,739 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:49:08,453 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:49:23,833 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:49:48,503 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:49:56,110 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:50:04,152 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:50:14,053 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:50:21,245 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:50:37,844 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:51:21,309 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:51:30,004 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:51:39,570 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:51:52,270 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:52:10,120 - INFO -   100/400 labelled
+2026-07-28 14:52:29,597 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:52:36,742 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:52:44,401 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:52:52,207 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:53:04,062 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:53:44,687 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:54:23,800 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:54:30,798 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:54:44,110 - INFO -   125/400 labelled
+2026-07-28 14:54:52,654 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:55:27,799 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:55:56,228 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:56:04,532 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:56:11,544 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:56:47,467 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:56:54,777 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:57:02,086 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:57:23,933 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:57:30,513 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:57:37,412 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:57:56,617 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:58:03,975 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:58:11,843 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:58:36,101 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:58:43,529 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:58:50,833 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 14:59:02,482 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:59:09,296 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:59:22,846 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:59:29,957 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:59:42,509 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 14:59:49,078 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 14:59:56,417 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:00:12,551 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:00:21,533 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:00:34,675 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:00:49,808 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:00:56,946 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:01:06,094 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:01:07,097 - INFO -   175/400 labelled
+2026-07-28 15:01:15,344 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:01:22,431 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:01:29,613 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:01:38,024 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:02:04,746 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:02:15,551 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:02:23,765 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:02:35,779 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:02:44,898 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:02:52,875 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:03:12,086 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:03:19,779 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:03:26,849 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:04:12,543 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:04:19,425 - INFO -   200/400 labelled
+2026-07-28 15:04:25,387 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:04:33,065 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:05:13,652 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:05:20,945 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:06:05,807 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:06:15,117 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:06:22,221 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:06:46,576 - INFO -   225/400 labelled
+2026-07-28 15:06:57,395 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:07:03,784 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:07:11,095 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:07:17,517 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:07:24,927 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:07:31,811 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:08:09,049 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:08:17,125 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:08:23,981 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:08:32,178 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:08:56,697 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:09:05,098 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:09:12,338 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:09:19,472 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:09:27,364 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:09:49,105 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:10:07,197 - INFO -   250/400 labelled
+2026-07-28 15:10:23,411 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:10:41,695 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:10:49,330 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:10:57,026 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:11:23,205 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:11:43,306 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:11:50,512 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:12:03,831 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:12:10,622 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:12:42,951 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:12:49,791 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:12:57,639 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:13:09,016 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:13:31,319 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:13:50,545 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:13:57,482 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:14:06,436 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:14:07,439 - INFO -   275/400 labelled
+2026-07-28 15:14:27,301 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:14:37,239 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:15:01,355 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:15:12,909 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:15:20,972 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:15:32,453 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:15:40,853 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:15:48,578 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:15:59,330 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:16:07,273 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:16:14,692 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:16:28,313 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:16:36,337 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:16:43,684 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:16:55,709 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:17:03,844 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:17:15,991 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:18:09,085 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:18:16,030 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:18:29,093 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:18:30,095 - INFO -   300/400 labelled
+2026-07-28 15:18:43,745 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:18:57,182 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:19:26,249 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:19:33,451 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:19:46,662 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:19:53,822 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:20:19,979 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:20:26,355 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:20:35,210 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:20:47,008 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:21:02,537 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:21:09,066 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:21:16,231 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:21:34,638 - INFO -   325/400 labelled
+2026-07-28 15:21:57,015 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:22:26,872 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:22:33,441 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:22:41,367 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:22:48,340 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:22:56,629 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:23:04,583 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:23:11,543 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:23:19,450 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:23:32,869 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:23:39,847 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:25:18,713 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:25:25,375 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:25:31,585 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:25:39,245 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:25:46,166 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:25:53,096 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:26:15,390 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:26:25,647 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:26:33,690 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:26:34,693 - INFO -   375/400 labelled
+2026-07-28 15:26:40,782 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:26:47,748 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:26:53,957 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:27:14,475 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:27:20,819 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:27:28,410 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:27:54,037 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:28:01,087 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:28:08,843 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:28:27,039 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:28:44,446 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 1)
+2026-07-28 15:28:50,860 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 2)
+2026-07-28 15:28:59,318 - WARNING - Empty content from ~anthropic/claude-sonnet-latest (attempt 3)
+2026-07-28 15:29:25,838 - INFO -   400/400 labelled
+
+==================================================================
+  Local SAE feature labels (v2)
+==================================================================
+  SAE                  : goodfire-llama-3.1-8b-instruct / layer_19
+  Corpus texts         : 865
+  Vocabulary (df>=3)   : 8606
+  Features observed    : 6600
+  Features kept        : 3749
+  Labels written       : 288  (empty: 0)
+  Incoherent (dropped) : 112
+  Extractive fallback  : 55
+  Distinct label texts : 284  (99% unique)
+==================================================================
+
+  Sample labels (feature, texts-fired-on, density, label):
+       4355  n=259  d=0.30  تضارب المصالح وإدارته
+      34584  n=257  d=0.30  الأشخاص والكيانات المرتبطة بالكيانات المدرجة
+      36574  n=257  d=0.30  **التمويل والإدارة المالية للأنشطة والمشاريع التشغيلية**
+      29604  n=254  d=0.29  تصعيد، وادي، بذلها، الجناه، بمحكمه
+      25174  n=252  d=0.29  مخاطر الاحتيال والفساد وسوء الإدارة المالية
+      16813  n=250  d=0.29  إدارة المخاطر واتخاذ الإجراءات اللازمة
+      63559  n=249  d=0.29  الإشارة إلى أرقام مواد وقرارات قانونية
+      40238  n=249  d=0.29  صياغة الإسناد إ
+      39749  n=248  d=0.29  الدستور، حمد، امير، وعلي، الامم
+      14280  n=247  d=0.29  مخاطر تمويل الإرهاب والعناية الواج
+      27697  n=244  d=0.28  التعارض أو عدم التوافق بين أمرين
+      59149  n=243  d=0.28  الخامسه، والعلاقه، استراتيجيه، الطرفين، التحويلات
+      14585  n=240  d=0.28  العمل الإنساني والإغاثي الخارجي
+       9888  n=240  d=0.28  تأكيد بيانات المستفيدين الفعليين بحسب رقم التنفيذ
+      37589  n=239  d=0.28  حوكمة المنظمات: القيادة والمخاطر والموارد البشرية
+
+  Sample spans for the first labelled feature:
+    [33.77] على المعلومات بغير داع ربما ينجم عنه تضارب في مصالح أعضاء المجلس أو الموظفين أو المديرين
+    [31.62] المنظمات غير الهادفة للربح تجاه إدارة تضارب المصالح. التعريف بالقواعد الأساسية لتحديد
+    [30.52] على المعلومات بغير داع ربما ينجم عنه تضارب في مصالح أعضاء المجلس أو الموظفين أو المديرين
+    [30.14] الأدلة والمعلومات الجنائية لإصدار شهادة حسن السيرة والسلوك باستخدام النماذج المعتمدة
+
+  Labels → checkpoints/labels_llm.json
+  Spans  → checkpoints/local_feature_spans.json   (re-score with --reuse_spans)
+
+  Check the sample spans are whole words. If fragments persist, raise --window;
+  if labels look generic, lower --max_density.
+
+  Next:
+    python safe_dpo_eval.py --model_path ./checkpoints/llama_sft/merged --arm safe --label_file checkpoints/labels_llm.json --steer_lang ar --limit 2
+

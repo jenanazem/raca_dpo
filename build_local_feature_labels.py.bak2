@@ -1,0 +1,534 @@
+#!/usr/bin/env python3
+"""
+Local SAE Feature Labelling for the RACA SAFE pipeline  (v2)
+=============================================================
+Replaces Neuronpedia's removed /api/explanation/export by deriving feature
+descriptions from your own corpus.
+
+Changes from v1, all fixing observed failures:
+
+  1. WORD-BOUNDARY SPANS. v1 took a window of +/- N *tokens* around the peak.
+     Llama 3.1 splits Arabic into 2-4 tokens per word, so both edges of every
+     span landed mid-word and produced fragments ("الم", "ادفه"). v2 uses the
+     tokenizer's offset mapping to convert the token window into a character
+     range in the original text, then expands to whitespace boundaries.
+
+  2. VOCABULARY-RESTRICTED SCORING. v1's TF-IDF actively preferred those
+     fragments: a broken fragment occurs once corpus-wide, so its IDF is
+     maximal, while real legal terms are common and scored low. v2 only
+     considers terms appearing at least --min_df times across the corpus, so
+     fragments cannot be selected even if some survive step 1.
+
+  3. DENSITY FILTER. v1 kept features firing on 100% of texts (n=60 of 60).
+     These are the generic features the paper's activation-density threshold
+     (delta) is meant to suppress; they cannot discriminate between answers.
+     v2 drops features outside [--min_density, --max_density].
+
+  4. DENSITY REPORTING, so the distribution is visible rather than guessed at.
+
+Output is {feature_index: description}, read by safe_dpo_eval.py --label_file.
+
+Usage:
+    # Small check first
+    python build_local_feature_labels.py \
+        --model_path ./checkpoints/ft_raca_v5/merged --max_texts 60
+
+    # Full pass. Corpus size matters: document frequencies drive both the
+    # vocabulary filter and the density estimate.
+    python build_local_feature_labels.py \
+        --model_path ./checkpoints/ft_raca_v5/merged \
+        --extra_texts data/processed/sft_train.jsonl \
+        --out checkpoints/local_feature_labels.json
+
+    # Re-score without touching the GPU
+    python build_local_feature_labels.py --model_path ... \
+        --reuse_spans --n_terms 6 --max_density 0.4
+"""
+
+import argparse
+import csv
+import glob
+import json
+import logging
+import math
+import os
+import re
+import time
+from collections import Counter, defaultdict
+from pathlib import Path
+
+import torch
+
+from pav import normalize_arabic
+
+log = logging.getLogger("build_labels")
+
+STOPWORDS = set("""
+من في على الى إلى عن مع هذا هذه ذلك التي الذي الذين ما لا أن ان إن او أو
+و ف ب ل ك ثم قد كان كانت يكون تكون هو هي هم كل بعد قبل عند لدى حتى
+اذا إذا لم لن بين دون غير سوى اي أي ايه أية كما لكن بل ايضا أيضا
+به بها له لها فيه فيها منه منها عليه عليها اليه إليه
+يجب يتم تم شان بشان بشأن وفقا طبقا حسب بموجب بناء
+الماده المادة ماده مادة البند بند الفقره الفقرة فقره فقرة
+القانون قانون المرسوم مرسوم القرار قرار اللائحه اللائحة لائحة
+هيئه هيئة تنظيم الاعمال الخيريه الخيرية قطر دوله دولة
+وهذا وهذه وذلك وكذلك ويمكن ويجب وتقوم وتكون ويكون وهو وهي وهم
+يشمل تشمل يعمل تعمل يتولي تتولي يتفق تتفق يتعين يتضمن تتضمن
+عام عامه بشكل بصوره حال حاله حالات نحو مثل ومثل خلال وخلال
+ذات ذوي اكثر اقل الاكثر الاقل عموما ايه اية كذلك ايضا
+بها بهذه بهذا لهذا لهذه فيما عما مما لما كون
+جميع بعض معظم سائر كافه كافة عده عدة
+الاول الثاني الثالث الرابع الخامس السادس السابع الثامن التاسع العاشر
+اولا ثانيا ثالثا رابعا خامسا
+""".split())
+
+MIN_TERM_LEN = 3
+
+# Arabic proclitics, longest first. A function word such as هذا surfaces as
+# وهذا / فهذا / بهذا / لهذا, so stopword matching must strip these before
+# testing membership.
+CLITIC_PREFIXES = ("وبال", "فبال", "وال", "فال", "بال", "كال", "لل",
+                   "ال", "و", "ف", "ب", "ل", "ك")
+
+# Characters in the Arabic block that do not occur in Qatari legal Arabic; their
+# presence indicates OCR drift.
+NON_ARABIC_LETTERS = set("پچژگیکەڵڤۆ")
+
+
+def _clitic_variants(term: str):
+    """The term itself plus each form obtained by stripping proclitics."""
+    yield term
+    seen = {term}
+    frontier = [term]
+    for _ in range(2):                       # at most two stacked clitics
+        nxt = []
+        for t in frontier:
+            for pre in CLITIC_PREFIXES:
+                if t.startswith(pre) and len(t) - len(pre) >= 2:
+                    cand = t[len(pre):]
+                    if cand not in seen:
+                        seen.add(cand)
+                        nxt.append(cand)
+                        yield cand
+        frontier = nxt
+        if not frontier:
+            break
+
+
+def is_stopword(term: str) -> bool:
+    return any(v in STOPWORDS for v in _clitic_variants(term))
+
+
+def is_junk_text(text: str) -> bool:
+    """Reject PDF/OCR artefacts: dotted leaders, page-number runs, OCR drift."""
+    if not text:
+        return True
+    n = len(text)
+    arabic = sum(1 for c in text if "\u0600" <= c <= "\u06ff")
+    if arabic / n < 0.45:
+        return True
+    if sum(1 for c in text if c in ".\u00b7\u2026_-") / n > 0.15:
+        return True
+    if sum(1 for c in text if c.isdigit()) / n > 0.12:
+        return True
+    if sum(1 for c in text if c in NON_ARABIC_LETTERS) > 3:
+        return True
+    # Dotted leaders survive the ratios when interleaved with words.
+    if re.search(r"\.{4,}", text):
+        return True
+    return False
+
+
+# ── Corpus ─────────────────────────────────────────────────────────────────────
+
+def load_corpus(csv_glob, extra_texts=None, chunk_size=400, overlap=50,
+                max_texts=None):
+    csv.field_size_limit(10 ** 7)
+    texts = []
+
+    for path in sorted(glob.glob(csv_glob)):
+        with open(path, encoding="utf-8-sig") as f:
+            for row in csv.DictReader(f):
+                body = (row.get("text") or "").strip()
+                if not body or len(body) < 100:
+                    continue
+                words = body.split()
+                step = max(1, chunk_size - overlap)
+                for i in range(0, len(words), step):
+                    chunk = " ".join(words[i:i + chunk_size])
+                    if len(chunk) > 80 and not is_junk_text(chunk):
+                        texts.append(chunk)
+
+    if extra_texts:
+        with open(extra_texts, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                ex = json.loads(line)
+                for field in ("instruction", "response", "provenance_text"):
+                    v = (ex.get(field) or "").strip()
+                    if len(v) > 80 and not is_junk_text(v):
+                        texts.append(v)
+
+    seen, unique = set(), []
+    for t in texts:
+        k = t[:200]
+        if k not in seen:
+            seen.add(k)
+            unique.append(t)
+    if max_texts:
+        unique = unique[:max_texts]
+    log.info("Corpus: %d texts", len(unique))
+    if not unique:
+        raise RuntimeError(f"No texts from {csv_glob}")
+    return unique
+
+
+# ── Span extraction ────────────────────────────────────────────────────────────
+
+def snap_to_words(text: str, start: int, end: int) -> str:
+    """Expand a character range outward to whitespace, so the span contains
+    whole words rather than subword fragments."""
+    start = max(0, min(start, len(text)))
+    end = max(start, min(end, len(text)))
+    while start > 0 and not text[start - 1].isspace():
+        start -= 1
+    while end < len(text) and not text[end].isspace():
+        end += 1
+    return re.sub(r"\s+", " ", text[start:end]).strip()
+
+
+class Harvester:
+    def __init__(self, model_path, sae_release, sae_layer, tl_model, device, max_len):
+        from sae_lens import SAE, HookedSAETransformer
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+
+        log.info("Loading %s", model_path)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
+        hf_model = AutoModelForCausalLM.from_pretrained(
+            model_path, dtype=torch.bfloat16, device_map=device,
+            attn_implementation="eager")
+        hf_model.eval()
+
+        log.info("Wrapping in HookedSAETransformer")
+        self.model = HookedSAETransformer.from_pretrained(
+            tl_model, hf_model=hf_model, tokenizer=self.tokenizer,
+            dtype=torch.bfloat16, fold_ln=False,
+            center_writing_weights=False, center_unembed=False, device=device)
+
+        log.info("Loading SAE %s / %s", sae_release, sae_layer)
+        self.sae = SAE.from_pretrained(release=sae_release, sae_id=sae_layer).to(device)
+        self.hook = f"{self.sae.cfg.metadata['hook_name']}.hook_sae_acts_post"
+        self.max_len = max_len
+        self.device = device
+        log.info("SAE width: %d", self.sae.cfg.d_sae)
+
+    def _encode(self, text):
+        """Tokenize with character offsets so spans map back to the source text."""
+        enc = self.tokenizer(text, truncation=True, max_length=self.max_len,
+                             return_offsets_mapping=True, add_special_tokens=True)
+        ids = list(enc["input_ids"])
+        offsets = list(enc["offset_mapping"])
+        bos = self.tokenizer.bos_token_id
+        if bos is not None and (not ids or ids[0] != bos):
+            ids = [bos] + ids
+            offsets = [(0, 0)] + offsets
+        return ids, offsets
+
+    def harvest(self, texts, top_per_text, window):
+        occurrences = defaultdict(list)
+
+        for ti, text in enumerate(texts):
+            try:
+                ids, offsets = self._encode(text)
+                if len(ids) < 4:
+                    continue
+                tokens = torch.tensor([ids], device=self.device)
+                with torch.no_grad():
+                    _, cache = self.model.run_with_cache_with_saes(
+                        tokens, saes=[self.sae])
+                acts = cache[self.hook][0]
+                del cache
+            except Exception as exc:
+                log.warning("Text %d failed: %s", ti, exc)
+                continue
+
+            body = acts[1:].float()          # drop BOS
+            if body.shape[0] < 2:
+                del acts
+                continue
+
+            summed = body.sum(dim=0)
+            k = min(top_per_text, summed.shape[0])
+            top_vals, top_idx = summed.topk(k)
+            peaks = body[:, top_idx].argmax(dim=0)
+
+            n_tok = len(offsets)
+            for j in range(k):
+                act = float(top_vals[j].item())
+                if act <= 0:
+                    continue
+                fid = int(top_idx[j].item())
+                tok = int(peaks[j].item()) + 1          # undo the BOS drop
+                lo = max(1, tok - window)
+                hi = min(n_tok - 1, tok + window)
+                c_start = offsets[lo][0]
+                c_end = offsets[hi][1]
+                if c_end <= c_start:
+                    continue
+                span = snap_to_words(text, c_start, c_end)
+                if len(span) < 12 or " " not in span:
+                    continue
+                occurrences[fid].append(
+                    {"span": span, "activation": act, "text_id": ti})
+
+            del acts, body, summed
+            if (ti + 1) % 50 == 0:
+                log.info("  %d/%d texts | %d features seen",
+                         ti + 1, len(texts), len(occurrences))
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+
+        log.info("Harvest complete: %d distinct features", len(occurrences))
+        return occurrences
+
+
+# ── Term scoring ───────────────────────────────────────────────────────────────
+
+def tokenize_terms(text, vocab=None):
+    norm = normalize_arabic(text)
+    norm = re.sub(r"[^\w\s]", " ", norm)
+    out = []
+    for t in norm.split():
+        if len(t) < MIN_TERM_LEN or t.isdigit() or is_stopword(t):
+            continue
+        if vocab is not None and t not in vocab:
+            continue
+        out.append(t)
+    return out
+
+
+def build_vocabulary(texts, min_df):
+    """Corpus document frequencies, plus the set of terms frequent enough to be
+    real words rather than tokenizer debris."""
+    df = Counter()
+    for t in texts:
+        df.update(set(tokenize_terms(t)))
+    vocab = {w for w, c in df.items() if c >= min_df}
+    log.info("Vocabulary: %d terms with df >= %d (of %d observed)",
+             len(vocab), min_df, len(df))
+    return df, vocab, len(texts)
+
+
+def extractive_label(spans, df, vocab, n_docs, n_terms=5):
+    tf = Counter()
+    for s in spans:
+        tf.update(tokenize_terms(s, vocab))
+    if not tf:
+        return ""
+    scored = []
+    for term, count in tf.items():
+        d = df.get(term, 0)
+        if d <= 0:
+            continue
+        idf = math.log((n_docs + 1) / (d + 1)) + 1.0     # smoothed, never <= 0
+        scored.append((math.sqrt(count) * idf, term))
+    if not scored:
+        return ""
+    scored.sort(reverse=True)
+    seen, picked = set(), []
+    for _, term in scored:
+        if term in seen:
+            continue
+        seen.add(term)
+        picked.append(term)
+        if len(picked) >= n_terms:
+            break
+    return "، ".join(picked)
+
+
+# ── Optional LLM glosses ───────────────────────────────────────────────────────
+
+LABEL_PROMPT = """فيما يلي مقاطع نصية من وثائق قانونية قطرية، وكلها تُنشّط الميزة ذاتها في شبكة عصبية.
+
+{spans}
+
+اكتب وصفاً موجزاً (من ٣ إلى ٨ كلمات) للمفهوم القانوني المشترك بين هذه المقاطع. اكتب الوصف فقط، دون أي مقدمات."""
+
+
+def openrouter_label(spans, model, api_key, max_retries=3):
+    import requests
+    listing = "\n".join(f"- {s[:200]}" for s in spans[:8])
+    payload = {"model": model, "max_tokens": 60, "temperature": 0.0,
+               "messages": [{"role": "user",
+                             "content": LABEL_PROMPT.format(spans=listing)}]}
+    for attempt in range(max_retries):
+        try:
+            r = requests.post("https://openrouter.ai/api/v1/chat/completions",
+                              headers={"Authorization": f"Bearer {api_key}"},
+                              json=payload, timeout=90)
+            if r.status_code == 200:
+                txt = r.json()["choices"][0]["message"]["content"].strip()
+                txt = txt.strip('"').strip("«»").strip()
+                if txt:
+                    return txt
+            elif r.status_code == 429:
+                time.sleep(2 * (attempt + 1))
+                continue
+            else:
+                log.warning("OpenRouter HTTP %d: %s", r.status_code, r.text[:150])
+        except Exception as exc:
+            log.warning("OpenRouter error: %s", exc)
+        time.sleep(1.5 * (attempt + 1))
+    return ""
+
+
+# ── Main ───────────────────────────────────────────────────────────────────────
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--model_path", required=True)
+    p.add_argument("--sae_release", default="goodfire-llama-3.1-8b-instruct")
+    p.add_argument("--sae_layer", default="layer_19")
+    p.add_argument("--tl_model", default="meta-llama/Llama-3.1-8B-Instruct")
+    p.add_argument("--corpus_glob", default="./data/processed/raca_tab*.csv")
+    p.add_argument("--extra_texts", default=None)
+    p.add_argument("--out", type=Path, default=Path("checkpoints/local_feature_labels.json"))
+    p.add_argument("--raw_out", type=Path, default=Path("checkpoints/local_feature_spans.json"))
+
+    p.add_argument("--top_per_text", type=int, default=200)
+    p.add_argument("--window", type=int, default=12,
+                   help="Tokens either side of the peak, before snapping to "
+                        "words. Arabic needs a wider window than English "
+                        "because of 2-4 tokens per word.")
+    p.add_argument("--max_texts", type=int, default=None)
+    p.add_argument("--max_len", type=int, default=512)
+
+    p.add_argument("--min_examples", type=int, default=3)
+    p.add_argument("--max_density", type=float, default=0.5,
+                   help="Drop features appearing in more than this fraction of "
+                        "texts — the generic features delta is meant to suppress.")
+    p.add_argument("--min_density", type=float, default=0.0)
+    p.add_argument("--min_df", type=int, default=3,
+                   help="A term must appear in this many corpus texts to be "
+                        "eligible. This is what keeps tokenizer fragments out.")
+    p.add_argument("--n_terms", type=int, default=5)
+
+    p.add_argument("--labeler", default="extractive", choices=["extractive", "openrouter"])
+    p.add_argument("--openrouter_model", default="anthropic/claude-3.5-sonnet")
+    p.add_argument("--max_label_features", type=int, default=None)
+    p.add_argument("--reuse_spans", action="store_true")
+    cfg = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO,
+                        format="%(asctime)s - %(levelname)s - %(message)s")
+
+    texts = load_corpus(cfg.corpus_glob, cfg.extra_texts, max_texts=cfg.max_texts)
+    n_texts = len(texts)
+
+    if cfg.reuse_spans:
+        if not cfg.raw_out.exists():
+            raise RuntimeError(f"--reuse_spans given but {cfg.raw_out} is missing")
+        occ = {int(k): v for k, v in json.loads(cfg.raw_out.read_text()).items()}
+        log.info("Reusing spans for %d features", len(occ))
+    else:
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        h = Harvester(cfg.model_path, cfg.sae_release, cfg.sae_layer,
+                      cfg.tl_model, device, cfg.max_len)
+        occ = h.harvest(texts, cfg.top_per_text, cfg.window)
+        cfg.raw_out.parent.mkdir(parents=True, exist_ok=True)
+        cfg.raw_out.write_text(json.dumps(
+            {str(k): v for k, v in occ.items()}, ensure_ascii=False))
+        log.info("Spans saved → %s", cfg.raw_out)
+        del h
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+    # Density = fraction of corpus texts in which the feature reached top-k.
+    density = {f: len({o["text_id"] for o in v}) / n_texts for f, v in occ.items()}
+    buckets = Counter()
+    for d in density.values():
+        buckets[min(int(d * 10) / 10, 0.9)] += 1
+    log.info("Density distribution (fraction of texts a feature fires on):")
+    for lo in sorted(buckets):
+        log.info("  %.1f-%.1f : %d features", lo, lo + 0.1, buckets[lo])
+
+    kept = {f: v for f, v in occ.items()
+            if len(v) >= cfg.min_examples
+            and cfg.min_density <= density[f] <= cfg.max_density}
+    log.info("%d/%d features kept (>= %d examples, density in [%.2f, %.2f])",
+             len(kept), len(occ), cfg.min_examples, cfg.min_density, cfg.max_density)
+    if not kept:
+        raise RuntimeError(
+            "No features survived filtering. Loosen --max_density or "
+            "--min_examples, or enlarge the corpus.")
+
+    order = sorted(kept, key=lambda f: -len(kept[f]))
+    df, vocab, n_docs = build_vocabulary(texts, cfg.min_df)
+
+    labels, empty = {}, 0
+    if cfg.labeler == "extractive":
+        for fid in order:
+            spans = [o["span"] for o in
+                     sorted(kept[fid], key=lambda o: -o["activation"])[:12]]
+            desc = extractive_label(spans, df, vocab, n_docs, cfg.n_terms)
+            if desc:
+                labels[str(fid)] = desc
+            else:
+                empty += 1
+    else:
+        api_key = os.environ.get("OPENROUTER_API_KEY")
+        if not api_key:
+            raise RuntimeError("OPENROUTER_API_KEY is not set")
+        targets = order[:cfg.max_label_features] if cfg.max_label_features else order
+        log.info("Labelling %d features via %s", len(targets), cfg.openrouter_model)
+        for i, fid in enumerate(targets, 1):
+            spans = [o["span"] for o in
+                     sorted(kept[fid], key=lambda o: -o["activation"])[:8]]
+            desc = openrouter_label(spans, cfg.openrouter_model, api_key) \
+                or extractive_label(spans, df, vocab, n_docs, cfg.n_terms)
+            if desc:
+                labels[str(fid)] = desc
+            else:
+                empty += 1
+            if i % 25 == 0:
+                log.info("  %d/%d labelled", i, len(targets))
+                cfg.out.parent.mkdir(parents=True, exist_ok=True)
+                cfg.out.write_text(json.dumps(labels, ensure_ascii=False))
+
+    cfg.out.parent.mkdir(parents=True, exist_ok=True)
+    cfg.out.write_text(json.dumps(labels, ensure_ascii=False))
+
+    uniq = len(set(labels.values()))
+    print(f"\n{'='*66}")
+    print("  Local SAE feature labels (v2)")
+    print(f"{'='*66}")
+    print(f"  SAE                  : {cfg.sae_release} / {cfg.sae_layer}")
+    print(f"  Corpus texts         : {n_texts}")
+    print(f"  Vocabulary (df>={cfg.min_df})   : {len(vocab)}")
+    print(f"  Features observed    : {len(occ)}")
+    print(f"  Features kept        : {len(kept)}")
+    print(f"  Labels written       : {len(labels)}  (empty: {empty})")
+    print(f"  Distinct label texts : {uniq}  ({uniq/max(1,len(labels)):.0%} unique)")
+    print(f"{'='*66}")
+    print("\n  Sample labels (feature, texts-fired-on, density, label):")
+    for fid in list(labels)[:15]:
+        f = int(fid)
+        print(f"    {fid:>7}  n={len(kept[f]):>3}  d={density[f]:.2f}  {labels[fid]}")
+
+    print("\n  Sample spans for the first labelled feature:")
+    first = int(next(iter(labels)))
+    for o in sorted(kept[first], key=lambda o: -o["activation"])[:4]:
+        print(f"    [{o['activation']:.2f}] {o['span'][:110]}")
+
+    print(f"\n  Labels → {cfg.out}")
+    print(f"  Spans  → {cfg.raw_out}   (re-score with --reuse_spans)")
+    print("\n  Check the sample spans are whole words. If fragments persist, "
+          "raise --window;\n  if labels look generic, lower --max_density.\n")
+    print(f"  Next:\n    python safe_dpo_eval.py --model_path {cfg.model_path} "
+          f"--arm safe --label_file {cfg.out} --steer_lang ar --limit 2\n")
+
+
+if __name__ == "__main__":
+    main()

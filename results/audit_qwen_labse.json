@@ -1,0 +1,13 @@
+{
+  "model": "qwen",
+  "embedder": "labse",
+  "n_questions": 86,
+  "A1_correlations": {
+    "Length": -0.012,
+    "Template rate": -0.052,
+    "Citation tokens": 0.128,
+    "CITMATCH": -0.005,
+    "Sup score": 0.263,
+    "PAV": 0.181
+  }
+}

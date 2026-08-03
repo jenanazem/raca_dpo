@@ -1,0 +1,13 @@
+{
+  "model": "qwen",
+  "embedder": "bge-m3",
+  "n_questions": 86,
+  "A1_correlations": {
+    "Length": -0.008,
+    "Template rate": -0.029,
+    "Citation tokens": 0.119,
+    "CITMATCH": -0.037,
+    "Sup score": 0.235,
+    "PAV": 0.149
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "model_id": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+  "use_qlora": true,
+  "dtype": "float16",
+  "total_vram_gb": 0,
+  "gpu_count": 0,
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.05,
+  "lora_target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "max_seq_length": 2048,
+  "training_batch_size": 2,
+  "gradient_accumulation_steps": 8,
+  "sae_hook_layer": 16,
+  "sae_expansion_factor": 8,
+  "sae_l1_coefficient": 0.0002
+}

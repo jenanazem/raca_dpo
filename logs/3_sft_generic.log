@@ -1,0 +1,131 @@
+2026-07-28 15:50:50,936 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:50,946 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/modules.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:51,067 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:51,076 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:51,077 - INFO - Loading SentenceTransformer model from sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2.
+2026-07-28 15:50:51,197 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:51,208 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:51,331 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:51,342 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/README.md "HTTP/1.1 200 OK"
+2026-07-28 15:50:51,465 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:51,475 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/modules.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:51,600 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:51,610 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:51,746 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-07-28 15:50:51,866 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:51,876 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:52,073 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:52,084 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5831.00it/s]
+2026-07-28 15:50:52,330 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-07-28 15:50:52,453 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-28 15:50:52,583 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-28 15:50:52,709 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-07-28 15:50:52,832 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:52,841 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:52,972 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:52,982 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:53,108 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:53,117 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/config.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:53,240 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:53,249 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:53,376 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:53,386 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:53,525 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-28 15:50:53,656 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-28 15:50:55,029 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 "HTTP/1.1 200 OK"
+2026-07-28 15:50:55,328 - INFO - HTTP Request: HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-28 15:50:55,337 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/e8f8c211226b894fcb81acc59f3b34ba3efd5f42/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-07-28 15:50:55,470 - INFO - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 "HTTP/1.1 200 OK"
+2026-07-28 15:50:55,650 - INFO - Loading ./checkpoints/llama_sft/merged
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:29,  9.70it/s]Loading weights:   5%|▍         | 14/291 [00:00<00:03, 72.96it/s]Loading weights:  11%|█         | 31/291 [00:00<00:02, 110.72it/s]Loading weights:  17%|█▋        | 49/291 [00:00<00:01, 125.77it/s]Loading weights:  22%|██▏       | 63/291 [00:00<00:01, 127.82it/s]Loading weights:  27%|██▋       | 78/291 [00:00<00:01, 133.53it/s]Loading weights:  32%|███▏      | 94/291 [00:00<00:01, 138.06it/s]Loading weights:  38%|███▊      | 112/291 [00:00<00:01, 131.23it/s]Loading weights:  45%|████▌     | 131/291 [00:01<00:01, 145.27it/s]Loading weights:  51%|█████     | 148/291 [00:01<00:01, 140.59it/s]Loading weights:  57%|█████▋    | 166/291 [00:01<00:00, 147.13it/s]Loading weights:  63%|██████▎   | 182/291 [00:01<00:00, 149.34it/s]Loading weights:  68%|██████▊   | 198/291 [00:01<00:00, 142.42it/s]Loading weights:  73%|███████▎  | 213/291 [00:01<00:00, 135.77it/s]Loading weights:  79%|███████▊  | 229/291 [00:01<00:00, 140.99it/s]Loading weights:  84%|████████▍ | 244/291 [00:01<00:00, 141.53it/s]Loading weights:  89%|████████▉ | 259/291 [00:01<00:00, 130.45it/s]Loading weights:  94%|█████████▍| 274/291 [00:02<00:00, 133.71it/s]Loading weights:  99%|█████████▉| 288/291 [00:02<00:00, 131.16it/s]Loading weights: 100%|██████████| 291/291 [00:02<00:00, 132.85it/s]
+2026-07-28 15:50:59,932 - INFO - Retriever: 1280 chunks
+2026-07-28 15:50:59,933 - INFO - Loading faiss with AVX512 support.
+2026-07-28 15:50:59,934 - INFO - Could not load library with AVX512 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx512'")
+2026-07-28 15:50:59,934 - INFO - Loading faiss with AVX2 support.
+2026-07-28 15:50:59,934 - INFO - Could not load library with AVX2 support due to:
+ModuleNotFoundError("No module named 'faiss.swigfaiss_avx2'")
+2026-07-28 15:50:59,934 - INFO - Loading faiss.
+2026-07-28 15:50:59,950 - INFO - Successfully loaded faiss.
+2026-07-28 15:51:00,698 - INFO - 30 PAV-evaluable examples
+PAV: loaded 50 template 4-grams
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.88it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  6.87it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[1/30] H=0.9503→0.5004 loops=2 PAV=False sim=0.831
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 274.37it/s]
+[2/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.817
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 294.30it/s]
+[3/30] H=1.6094→1.6094 loops=3 PAV=False sim=0.548
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 309.77it/s]
+[4/30] H=0.673→0.673 loops=3 PAV=False sim=0.685
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 277.62it/s]
+[5/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.794
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 288.65it/s]
+[6/30] H=0.9503→-0.0 loops=1 PAV=False sim=0.470
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 288.94it/s]
+[7/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.561
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 283.76it/s]
+[8/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.668
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 302.82it/s]
+[9/30] H=0.673→0.5004 loops=2 PAV=False sim=0.442
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 309.27it/s]
+[10/30] H=0.673→-0.0 loops=1 PAV=False sim=0.466
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 283.21it/s]
+[11/30] H=1.3322→1.3322 loops=3 PAV=False sim=0.385
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 311.66it/s]
+[12/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.852
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 313.22it/s]
+[13/30] H=0.9503→0.5004 loops=1 PAV=False sim=0.724
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 308.56it/s]
+[14/30] H=1.6094→1.6094 loops=3 PAV=False sim=0.600
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 284.53it/s]
+[15/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.747
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 282.01it/s]
+[16/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.379
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 279.40it/s]
+[17/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.208
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 313.59it/s]
+[18/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.622
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 306.31it/s]
+[19/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.677
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 283.00it/s]
+[20/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.828
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 289.44it/s]
+[21/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.610
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 304.40it/s]
+[22/30] H=0.9503→1.6094 loops=3 PAV=False sim=0.531
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 306.49it/s]
+[23/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.817
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 277.51it/s]
+[24/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.750
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 225.27it/s]
+[25/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.693
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 283.71it/s]
+[26/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.776
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 282.94it/s]
+[27/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.912
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 298.29it/s]
+[28/30] H=0.5004→0.5004 loops=0 PAV=False sim=0.554
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 287.66it/s]
+[29/30] H=0.9503→0.673 loops=3 PAV=False sim=0.191
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 281.46it/s]
+[30/30] H=-0.0→-0.0 loops=0 PAV=False sim=0.710
+
+==============================================================
+  GENERIC  |  ./checkpoints/llama_sft/merged  |  seed 42
+==============================================================
+  n                    : 30
+  CITPRESENCE          : 40.0%
+  CITMATCH             : 13.3%
+  CITSUPPORT           : 33.3%
+  PAV                  : 0.0%
+  Avg cosine sim       : 0.628
+  Avg answer length    : 71.0
+  Trigger rate         : 36.7%
+  Avg loops            : 0.83
+  Actually enriched    : 0.0%
+==============================================================
+
+Saved → results/eval_sft_generic.json
+
